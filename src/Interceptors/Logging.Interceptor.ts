@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { catchError, map, Observable } from 'rxjs';
 import { PinoLogger } from 'nestjs-pino';
-import { Request } from 'express';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
@@ -19,10 +18,10 @@ export class LoggingInterceptor implements NestInterceptor {
     const res = context.switchToHttp().getResponse();
 
     const { method, url, headers, body, user } = req;
-    const userAgent = headers['user-agent'];
+    // const userAgent = headers['user-agent'];
     const referer = headers['referer'] || '';
-    const compression = headers['accept-encoding'] || '';
-    const clientIp = req.ip || req.connection.remoteAddress;
+    // const compression = headers['accept-encoding'] || '';
+    // const clientIp = req.ip || req.connection.remoteAddress;
     const requestSize = JSON.stringify(body)?.length || 0;
     const startTime = Date.now();
 
